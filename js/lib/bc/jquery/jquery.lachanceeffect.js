@@ -8,12 +8,6 @@
  * Ken Burns has an effect named after him, why shouldn't Troy Lachance?
  * This plugin animates a child image to zoom in within borders of a 
  * parent element.
- * 
- * @param float scale
- *     Percent to scale image on roll over as a decimal (0 - 1)
- *     Default: 0.5
- * @param int duration
- *     Duration in milliseconds for image animation
  */
 
 (function($) {
@@ -31,6 +25,12 @@
 	var methods = {
 		/**
 		 * Constructor
+		 * 
+		 * @param float scale
+	 	 *   Percent to scale image on roll over as a decimal (0 - 1)
+	 	 *   Default: 0.5
+	 	 * @param int duration
+		 *   Duration in milliseconds for image animation
 		 */
 		init: function(options) {
 			return this.each(function() {

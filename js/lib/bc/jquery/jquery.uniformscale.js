@@ -8,13 +8,6 @@
  * Scale target element uniformly to fit indicated dimension. This 
  * plugin will surround the image with a div to be used to more
  * dependably retrieve the surrounding dimensions.
- * 
- * @param string dimension
- *     Dimension to scale expressed as height or width
- * @param int min
- *     Minimum size of non-targetted dimension
- * @param boolean resize
- *     Create listener to automatically adjust when parent is resized.
  *     
  * TODO: This plugin was built for a specific purpose. Investigate 
  * making this have wider applications.
@@ -36,13 +29,23 @@
 	var methods = {
 		/**
 		 * Constructor
+		 * 
+		 * @param string dimension
+		 *   Dimension to scale expressed as height or width
+		 * @param int min
+		 *   Minimum size of non-targetted dimension
+		 * @param boolean resize
+		 *   Create listener to automatically adjust when parent is resized.
 		 */
 		init: function(options) {
 			return this.each(function() {
 				var wrapper = internal.wrapper(this);
 				options = $.extend({}, defaults, options);
 				if (options.resize) {
-					$(exports).bind('resize.uniformscale', {options: options, self: $(this)}, function(event) {
+					$(exports).bind('resize.uniformscale', {
+						options: options, 
+						self: $(this)
+						}, function(event) {
 						internal.resize(event.data.options, event.data.self);
 					});
 				}
@@ -85,7 +88,7 @@
 	/**
      * Private plugin methods
      */
-    var internal = {
+	var internal = {
 		wrapper: function(self) {
 			var div = $('<div class="uniformscale">').css({
 				width: '100%',
@@ -99,10 +102,10 @@
 				options.width = $(self).parent().width();
 				options.height = $(self).parent().height();
 				var width = $(self).width(),
-					height = $(self).height(),
-					ratio = 0,
-					newH = 0,
-					newW = 0;
+				height = $(self).height(),
+				ratio = 0,
+				newH = 0,
+				newW = 0;
 				switch (options.dimension) {
 					case 'width':
 						ratio = options.width / width;
@@ -117,7 +120,7 @@
 							$(self).width(newW);
 							$(self).height(options.min);
 						}
-					break;
+						break;
 					case 'height':
 						ratio = options.height / height;
 						newW = width * ratio;
@@ -131,24 +134,24 @@
 							$(self).width(options.min);
 							$(self).height(newH);
 						}
-					break;
+						break;
 					default:
 						$.error('Improper dimension set. Please chose height or width.');
-					break;
+						break;
 				}
 			}
 		}
 	};
 	
 	$.fn.UniformScale = function(method_options) {
-        if (methods[method_options]) {
-            return methods[method_options].apply(this, Array.prototype.slice.call(arguments, 1));
-        }
-        else if (typeof method_options === 'object' || !method_options) {
-            return methods.init.apply(this, arguments);
-        }
-        else {
-            $.error('Method ' + method + 'does not exist. What are you doing?');
-        }
-    };
+		if (methods[method_options]) {
+			return methods[method_options].apply(this, Array.prototype.slice.call(arguments, 1));
+		}
+		else if (typeof method_options === 'object' || !method_options) {
+			return methods.init.apply(this, arguments);
+		}
+		else {
+			$.error('Method ' + method + 'does not exist. What are you doing?');
+		}
+	};
 })(jQuery, window);
