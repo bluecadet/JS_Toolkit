@@ -16,7 +16,7 @@
  *     Duration in milliseconds for image animation
  */
 
- (function($) {
+(function($) {
 	/**
 	 * Default values
 	 */
@@ -25,14 +25,14 @@
 		scale: 0.25
 	};
 	 
-    /**
+	/**
      * Public plugin methods
      */
-    var methods = {
+	var methods = {
 		/**
 		 * Constructor
 		 */
-        init: function(options) {
+		init: function(options) {
 			return this.each(function() {
 				if ($('img', this).height() > 0 && $('img', this).width() > 0) {
 					internal.setup(this, options);
@@ -45,31 +45,31 @@
 					});
 				}
 			});
-        },
+		},
 		/**
 		 * Removes mouse events.
 		 */
-        destroy: function() {
-            return this.each(function() {
+		destroy: function() {
+			return this.each(function() {
 				$('img', this).unbind('mouseenter', internal.mouseOver);
 				$('img', this).unbind('mouseleave', internal.mouseOut);
 			});
-        }
-    };
+		}
+	};
 
-    /**
+	/**
      * Private plugin methods
      */
-    var internal = {
+	var internal = {
 		/**
 		 * Extend defaults in a new object
 		 */
-        storeDefaults: function(self, options) {
+		storeDefaults: function(self, options) {
 			options = $.extend({}, defaults, options);
 			options.original_height = $('img', self).height();
 			options.original_width = $('img', self).width();
 			return options;
-        },
+		},
 		/**
 		 * Add markup and styles to target
 		 */
@@ -87,66 +87,70 @@
 				position: 'absolute'
 			});
 			options = internal.storeDefaults(self, options);
-			$(self).bind('mouseenter', {options: options}, internal.mouseOver);
-			$(self).bind('mouseleave', {options: options}, internal.mouseOut);
+			$(self).bind('mouseenter', {
+				options: options
+			}, internal.mouseOver);
+			$(self).bind('mouseleave', {
+				options: options
+			}, internal.mouseOut);
 		},
 		/**
 		 * mouseover handler
 		 */
-        mouseOver: function(event) {
-            var options = event.data.options
-				pct = options.scale,
-				h = options.original_height,
-				w = options.original_width,
-				newH = h * pct,
-				newW = w * pct,
-				newT = newH / 2 * -1,
-				newL = newW / 2 * -1;
-            $('img', this).stop();
-            $('img', this).animate({
-                height: newH + 'px',
-                width: newW + 'px',
-                marginLeft: newL + 'px',
-                marginTop: newT + 'px',
-                top: '50%',
-                left: '50%'
-            }, {
-                duration: options.duration
-            });
-        },
+		mouseOver: function(event) {
+			var options = event.data.options
+			pct = options.scale,
+			h = options.original_height,
+			w = options.original_width,
+			newH = h * pct,
+			newW = w * pct,
+			newT = newH / 2 * -1,
+			newL = newW / 2 * -1;
+			$('img', this).stop();
+			$('img', this).animate({
+				height: newH + 'px',
+				width: newW + 'px',
+				marginLeft: newL + 'px',
+				marginTop: newT + 'px',
+				top: '50%',
+				left: '50%'
+			}, {
+				duration: options.duration
+			});
+		},
 		/**
 		 * mouseout handler
 		 */
-        mouseOut: function(event) {
-            var options = event.data.options,
-				newH = options.original_height,
-				newW = options.original_width;
-            $('img', this).stop();
-            $('img', this).animate({
-                height: newH + 'px',
-                width: newW + 'px',
-                marginTop: '0px',
-                marginLeft: '0px',
-                top: '0%',
-                left: '0%'
-            }, {
-                duration: options.duration
-            });
-        }
-    };
+		mouseOut: function(event) {
+			var options = event.data.options,
+			newH = options.original_height,
+			newW = options.original_width;
+			$('img', this).stop();
+			$('img', this).animate({
+				height: newH + 'px',
+				width: newW + 'px',
+				marginTop: '0px',
+				marginLeft: '0px',
+				top: '0%',
+				left: '0%'
+			}, {
+				duration: options.duration
+			});
+		}
+	};
 	
 	/**
 	 * Magic.
 	 */
-    $.fn.LachanceEffect = function(method_options) {
-        if (methods[method_options]) {
-            return methods[method_options].apply(this, Array.prototype.slice.call(arguments, 1));
-        }
-        else if (typeof method_options === 'object' || !method_options) {
-            return methods.init.apply(this, arguments);
-        }
-        else {
-            $.error('Method ' + method + 'does not exist. What are you doing?');
-        }
-    };
+	$.fn.LachanceEffect = function(method_options) {
+		if (methods[method_options]) {
+			return methods[method_options].apply(this, Array.prototype.slice.call(arguments, 1));
+		}
+		else if (typeof method_options === 'object' || !method_options) {
+			return methods.init.apply(this, arguments);
+		}
+		else {
+			$.error('Method ' + method + 'does not exist. What are you doing?');
+		}
+	};
 })(jQuery);
