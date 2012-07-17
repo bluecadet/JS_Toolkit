@@ -93,7 +93,6 @@
 							current_frame = (current_frame > target_frame) ? current_frame - 1 : current_frame + 1;
 						}
 						$($(self).children()[current_frame]).show();
-						console.log(current_frame);
 					}
 					else {
 						// done.
