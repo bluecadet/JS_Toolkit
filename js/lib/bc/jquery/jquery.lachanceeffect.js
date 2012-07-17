@@ -3,7 +3,7 @@
  * 
  * @author Bluecadet, developers@bluecadet.com
  * @license MIT
- * @license http://opensource.org/licenses/mit-license.html
+ * @license https://github.com/bluecadet/JS_Toolkit/blob/master/LICENSE.txt
  *
  * Ken Burns has an effect named after him, why shouldn't Troy Lachance?
  * This plugin animates a child image to zoom in within borders of a 
