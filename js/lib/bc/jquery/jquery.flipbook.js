@@ -12,7 +12,6 @@
  * TODO: Update animation properties
  * TODO: Destroy
  * TODO: Allow animation to loop
- * TODO: Allow to jump to specified frame
  */
 
 (function($, exports) {
