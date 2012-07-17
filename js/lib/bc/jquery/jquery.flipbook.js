@@ -14,7 +14,7 @@
  * TODO: Allow animation to loop
  */
 
-(function($, exports) {
+(function($) {
 	
 	/**
 	 * Default values
@@ -203,4 +203,4 @@
 			$.error('Method ' + method + 'does not exist.');
 		}
 	};
-})(jQuery, window);
+})(jQuery);
