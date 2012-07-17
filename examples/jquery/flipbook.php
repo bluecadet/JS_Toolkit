@@ -24,7 +24,7 @@
 	<div class="content">
 		<hgroup class="main">
 			<h1>Bluecadet Javascript Toolkit</h1>
-			<h2>jQuery.FlipBook <a href="https://github.com/bluecadet/JS_Toolkit/blob/master/js/lib/bc/jquery/jquery.flipbook.js">(https://github.com/bluecadet/JS_Toolkit/blob/master/js/lib/bc/jquery/jquery.flipbook.js)<a></h2>
+			<h2>jQuery.FlipBook <a href="https://github.com/bluecadet/JS_Toolkit/blob/master/js/lib/bc/jquery/jquery.flipbook.js">(https://github.com/bluecadet/JS_Toolkit/blob/master/js/lib/bc/jquery/jquery.flipbook.js)</a></h2>
 		</hgroup>
 		<p>
 			Takes an array of images to be flipped through like and old school flip book animation. 
