@@ -3,7 +3,7 @@
  * 
  * @author Bluecadet, developers@bluecadet.com
  * @license MIT
- * @license http://opensource.org/licenses/mit-license.html
+ * @license https://github.com/bluecadet/JS_Toolkit/blob/master/LICENSE.txt
  *
  * Scale target element uniformly to fit indicated dimension. This 
  * plugin will surround the image with a div to be used to more

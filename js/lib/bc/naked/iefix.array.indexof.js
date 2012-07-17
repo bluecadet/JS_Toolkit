@@ -3,7 +3,7 @@
  * 
  * @author Bluecadet, developers@bluecadet.com
  * @license MIT
- * @license http://opensource.org/licenses/mit-license.html
+ * @license https://github.com/bluecadet/JS_Toolkit/blob/master/LICENSE.txt
  *
  * Older versions of Internet Explorer doesn't have an indexOf 
  * function for Arrays. This modifies the prototype to add in 
