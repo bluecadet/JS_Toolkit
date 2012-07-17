@@ -31,8 +31,18 @@
 			You can indicate stop frames and control the speed of the animation.
 		</p>
 		</p>
-		<div class="example">
-			<div id="flipbook"></div>
+		<div class="example example-01">
+			<div class="flipbook"></div>
+			<h3>Demo at 12 fps</h3>
+			<ul>
+				<li><a href="#" class="play">Play</a></li>
+				<li><a href="#" class="stop">Stop</a></li>
+				<li><a href="#" class="skip">Skip to frame 24</a></li>
+			</ul>
+		</div>
+		<div class="example example-02">
+			<div class="flipbook"></div>
+			<h3>Demo at 24 fps</h3>
 			<ul>
 				<li><a href="#" class="play">Play</a></li>
 				<li><a href="#" class="stop">Stop</a></li>
@@ -60,37 +70,46 @@
 			}
 			
 			/**
-			 * Create the flipbook
+			 * Going to vary FPS to display two distinct animations on 
+			 * the same page
 			 */
-			$('#flipbook').FlipBook({
-				frames: frames,
-				fps: 24,
-				complete: function() {
-					console.log('All images have been loaded');
-				}
-			});
+			var fps = [12, 24];
 			
-			/**
-			 * Play/Stop buttons
-			 */
-			$('.play').bind('click', function(event) {
-				event.preventDefault();
-				$('#flipbook').FlipBook('play', {
+			$.each($('.example'), function(count, example) {
+				
+				/**
+				* Create the flipbook
+				*/
+				$('.flipbook', example).FlipBook({
+					frames: frames,
+					fps: fps[count],
 					complete: function() {
-						console.log('Animation Complete');
+						console.log('All images have been loaded');
 					}
 				});
-			});
-			$('.stop').bind('click', function(event) {
-				event.preventDefault();
-				$('#flipbook').FlipBook('stop');
-			});
-			
-			$('.skip').bind('click', function(event) {
-				event.preventDefault();
-				$('#flipbook').FlipBook('skip', {
-					frame: 24
+
+				/**
+				* Play/Stop/Skip buttons
+				*/
+				$('.play', example).bind('click', function(event) {
+					event.preventDefault();
+					$('.flipbook', example).FlipBook('play', {
+						complete: function() {
+							console.log('Animation Complete');
+						}
+					});
 				});
+				$('.stop', example).bind('click', function(event) {
+					event.preventDefault();
+					$('.flipbook', example).FlipBook('stop');
+				});
+				$('.skip', example).bind('click', function(event) {
+					event.preventDefault();
+					$('.flipbook', example).FlipBook('skip', {
+						frame: 24
+					});
+				});
+				
 			});
 			
 		})(jQuery, window);
