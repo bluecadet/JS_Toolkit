@@ -24,7 +24,7 @@
 	<div class="content">
 		<hgroup class="main">
 			<h1>Bluecadet Javascript Toolkit</h1>
-			<h2>jQuery.flipbook</h2>
+			<h2>jQuery.FlipBook</h2>
 		</hgroup>
 		<p>
 			Takes an array of images to be flipped through like and old school flip book animation. 
@@ -32,7 +32,12 @@
 		</p>
 		</p>
 		<div class="example">
-			
+			<div id="flipbook"></div>
+			<ul>
+				<li><a href="#" class="play">Play</a></li>
+				<li><a href="#" class="stop">Stop</a></li>
+				<li><a href="#" class="skip">Skip to frame 24</a></li>
+			</ul>
 		</div>
 	</div>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
@@ -43,7 +48,51 @@
 		 * Demo code
 		 */
 		(function($, exports) {
-			console.log('Hello');
+			
+			/**
+			 * I'm lazy. Building an array of all the images I wish to load.
+			 */
+			var frames = new Array(),
+				total_frames = 48;
+			for (var i = 1; i < total_frames; i++) {
+				var num = (i < 10) ? '0' + i : i;
+				frames.push('../img/flipbook/flipbook00' + num + '.gif');
+			}
+			
+			/**
+			 * Create the flipbook
+			 */
+			$('#flipbook').FlipBook({
+				frames: frames,
+				fps: 24,
+				complete: function() {
+					console.log('All images have been loaded');
+				}
+			});
+			
+			/**
+			 * Play/Stop buttons
+			 */
+			$('.play').bind('click', function(event) {
+				event.preventDefault();
+				$('#flipbook').FlipBook('play', {
+					complete: function() {
+						console.log('Animation Complete');
+					}
+				});
+			});
+			$('.stop').bind('click', function(event) {
+				event.preventDefault();
+				$('#flipbook').FlipBook('stop');
+			});
+			
+			$('.skip').bind('click', function(event) {
+				event.preventDefault();
+				$('#flipbook').FlipBook('skip', {
+					frame: 24
+				});
+			});
+			
 		})(jQuery, window);
 	</script>
 </body>
