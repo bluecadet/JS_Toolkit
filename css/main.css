@@ -31,6 +31,9 @@ h2 {
 .main h2 {
   font-family: 'Courier New', Courier, monospace;
   font-style: italic; }
+  .main h2 a {
+    font: 13px/1.5em Helvetica, Arial, sans-serif;
+    text-transform: lowercase; }
 
 p {
   font-size: 15px;

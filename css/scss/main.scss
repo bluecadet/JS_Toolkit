@@ -52,6 +52,11 @@ h2 {
 	h2 {
 		font-family: 'Courier New', Courier, monospace;
 		font-style: italic;
+		
+		a {
+			font: 13px/1.5em Helvetica, Arial, sans-serif;
+			text-transform: lowercase;
+		}
 	}
 }
 
