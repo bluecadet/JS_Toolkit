@@ -32,9 +32,10 @@
 			<div class="group">
 				<h2>jQuery</h2>
 				<ul>
+					<li><a href="examples/jquery/animateauto.php">animateauto</a></li>
 					<li><a href="examples/jquery/flipbook.php">Flipbook</a></li>
-					<li><a href="#">Lachance Effect</a></li>
-					<li><a href="#">Uniform Scale</a></li>
+					<li>Lachance Effect</li>
+					<li>Uniform Scale</li>
 				</ul>
 			</div>
 			<div class="group">
